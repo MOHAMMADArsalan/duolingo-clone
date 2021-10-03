@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 4,
         borderColor: 'lightgray',
         borderRadius: 10,
-        alignItems: "center"
+        alignItems: "center",
+        padding: 10
     },
     optionImage: {
         width: '100%',
