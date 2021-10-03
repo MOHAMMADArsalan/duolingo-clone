@@ -1,9 +1,12 @@
 import React from "react";
 import { View, Text } from "react-native";
-import { ImageOption } from "..";
+import { ImageOption, Button } from "..";
 import styles from "./styles";
 
 const MultiChoiceQuestion = ({ question, selected, onSelect }) => {
+    const onButtonPress = () => {
+        console.warn("Pressed")
+    }
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{question.question}</Text>
@@ -18,6 +21,11 @@ const MultiChoiceQuestion = ({ question, selected, onSelect }) => {
                     />
                 ))}
             </View>
+            <Button 
+                text="Check" 
+                onPress={onButtonPress}
+                disabled={!selected}
+                />
         </View>
     )
 }
