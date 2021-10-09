@@ -1,32 +1,31 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { ImageOption, Button } from "..";
-import styles from "./styles";
+import React, { useState } from "react";
+import { ImageMultiChoiceQuestion } from "../";
+import { checkIndexOutOfBound } from "../../utils/helpers";
+const MultiChoiceQuestion = ({ questions }) => {
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+    const [selected, setSelected] = useState(false);
 
-const MultiChoiceQuestion = ({ question, selected, onSelect }) => {
-    const onButtonPress = () => {
-        console.warn("Pressed")
+    const onSelect = (option) => {
+        setSelected(option)
+    }
+
+    const checkCorrectOption = () => {
+        if(selected.correct) {
+            const nextIndex = checkIndexOutOfBound(questions, currentQuestionIndex + 1) ? 0 : currentQuestionIndex + 1;
+            setCurrentQuestionIndex(nextIndex)
+            setSelected(null)
+        } else {
+            alert("Wrong. try other options")
+        }
     }
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>{question.question}</Text>
-            <View style={styles.optionsContainer}>
-                {question.options.map((option) => (
-                    <ImageOption
-                        key={option.id}
-                        image={option.image}
-                        text={option.text}
-                        isSelected={selected?.id === option.id}
-                        onPress={() => onSelect(option)}
-                    />
-                ))}
-            </View>
-            <Button 
-                text="Check" 
-                onPress={onButtonPress}
-                disabled={!selected}
-                />
-        </View>
+        <ImageMultiChoiceQuestion 
+            question={questions[currentQuestionIndex]}
+            selected={selected}
+            onSelect={onSelect}
+            onPress={checkCorrectOption}
+        />
     )
 }
+
 export default MultiChoiceQuestion;

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { MultiChoiseQuestion } from "./src/components";
+import { MultiChoiceQuestion } from "./src/components";
 import styles from "./App.styles";
-import question  from "./src/data/oneQuestionWithOption";
+import questions  from "./src/data/imageMulatipleChoiceQuestions";
 export default function App() {
-  const [ selected, setSelected ] = useState(null) 
   return (
     <View style={styles.container}>
-      <MultiChoiseQuestion question={question} selected={selected} onSelect={setSelected}/>
+      <MultiChoiceQuestion questions={questions}/>
     </View>
   );
 }

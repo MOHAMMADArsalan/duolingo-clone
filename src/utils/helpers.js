@@ -1,0 +1,1 @@
+export const checkIndexOutOfBound = (questions, nIdx) => questions.length === nIdx
