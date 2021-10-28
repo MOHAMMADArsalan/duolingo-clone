@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { ImageMultiChoiceQuestion } from "../";
 import { checkIndexOutOfBound } from "../../utils/helpers";
 const MultiChoiceQuestion = ({ questions }) => {
@@ -29,3 +30,19 @@ const MultiChoiceQuestion = ({ questions }) => {
 }
 
 export default MultiChoiceQuestion;
+
+MultiChoiceQuestion.propTypes = {
+    questions: PropTypes.arrayOf(
+        PropTypes.shape({
+            question: PropTypes.string.isRequired,
+            options: PropTypes.arrayOf(
+                PropTypes.shape({
+                    id: PropTypes.string,
+                    text: PropTypes.string,
+                    image: PropTypes.string,
+                    correct: PropTypes.bool
+                })
+            ).isRequired
+        })
+    ).isRequired
+}

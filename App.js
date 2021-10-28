@@ -6,7 +6,7 @@ import questions  from "./src/data/imageMulatipleChoiceQuestions";
 export default function App() {
   return (
     <View style={styles.container}>
-      <MultiChoiceQuestion questions={questions}/>
+      <MultiChoiceQuestion questions={questions} />
     </View>
   );
 }
