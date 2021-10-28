@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import PropTypes from "prop-types";
 import { ImageOption, Button } from "..";
 import styles from "./styles";
 
@@ -27,3 +28,17 @@ const ImageMultiChoiceQuestion = ({ question, selected, onSelect, onPress }) => 
     )
 }
 export default ImageMultiChoiceQuestion;
+
+ImageMultiChoiceQuestion.propTypes = {
+    question: PropTypes.shape({
+        question: PropTypes.string.isRequired,
+        options: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.string,
+                text: PropTypes.string,
+                image: PropTypes.string,
+                correct: PropTypes.bool
+            })
+        ).isRequired
+    })
+}
