@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View } from 'react-native';
-import { QuestionWrapper, OpenEndedQuestion } from "./src/components";
+import { QuestionWrapper } from "./src/components";
 import styles from "./App.styles";
-// import questions  from "./src/data/imageMulatipleChoiceQuestions";
-import questions from "./src/data/allQuestions";
-
+import { QuizProvider } from "./src/contexts/QuizContext";
 export default function App() {
   return (
     <View style={styles.container}>
-      <QuestionWrapper questions={questions} />
+      <QuizProvider>
+        <QuestionWrapper />
+      </QuizProvider>
     </View>
   );
 }
