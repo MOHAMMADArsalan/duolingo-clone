@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text } from "react-native";
 import PropTypes from "prop-types";
 import { ImageOption, Button } from "..";
 import styles from "./styles";
 
-const ImageMultiChoiceQuestion = ({ question, selected, onSelect, onPress }) => {
+const ImageMultiChoiceQuestion = ({ 
+    question, 
+    onCorrect,
+    onWrong
+ }) => {
+    const [selected, setSelected] = useState(false);
+
+    const onSelect = (option) => {
+        setSelected(option)
+    }
+
+    const handleAnswer = () => {
+        if(selected?.correct) {
+            onCorrect();
+            setSelected(false)
+        } else {
+            onWrong();
+        }
+    }
     return (
         <View style={styles.container}>
             <Text style={styles.title}>{question.question}</Text>
@@ -21,7 +39,7 @@ const ImageMultiChoiceQuestion = ({ question, selected, onSelect, onPress }) => 
             </View>
             <Button 
                 text="Check" 
-                onPress={onPress}
+                onPress={handleAnswer}
                 disabled={!selected}
                 />
         </View>
@@ -40,5 +58,7 @@ ImageMultiChoiceQuestion.propTypes = {
                 correct: PropTypes.bool
             })
         ).isRequired
-    })
+    }),
+    onCorrect: PropTypes.func.isRequired,
+    onWrong: PropTypes.func.isRequired
 }
