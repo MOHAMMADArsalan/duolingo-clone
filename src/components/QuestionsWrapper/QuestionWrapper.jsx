@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { ImageMultiChoiceQuestion, OpenEndedQuestion } from "..";
+import { ImageMultiChoiceQuestion, OpenEndedQuestion, Header } from "..";
 import { checkIndexOutOfBound } from "../../utils/helpers";
 const Questions = ({ questions }) => {
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1)
 
     const onCorrect = () => {
         const nextIndex = checkIndexOutOfBound(questions, currentQuestionIndex + 1) ? 0 : currentQuestionIndex + 1;
@@ -17,6 +17,7 @@ const Questions = ({ questions }) => {
 
     return (
         <>
+            <Header progress={currentQuestionIndex / questions.length} />
             {question.type === 'OPEN_ENDED' && (
                 <OpenEndedQuestion
                     question={question}
