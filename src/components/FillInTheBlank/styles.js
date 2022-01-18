@@ -8,7 +8,12 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: "row",
         alignSelf: "stretch",
-        marginVertical: 10
+        marginVertical: 10,
+        height: 60
+    },
+    text: {
+        alignSelf: 'flex-end',
+        fontSize: 18
     },
     blank: {
         borderBottomWidth: 2,

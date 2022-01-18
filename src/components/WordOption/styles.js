@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
         padding: 10,
         paddingHorizontal: 15,
         margin: 10
-    }
+    },
+    text: {},
 });
 
 export default styles;
